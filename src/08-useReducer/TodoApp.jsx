@@ -8,12 +8,12 @@ import { TodoList } from "./TodoList";
 const initialState = [
     {
         id : new Date().getTime(),
-        desc : "Recolectar worms",
+        description : "Recolectar worms",
         done : false
     },
     {
         id : new Date().getTime()+5,
-        desc : "Oler flores",
+        description : "Oler flores",
         done : false
     },
 ]
@@ -23,8 +23,15 @@ export const TodoApp = () => {
     const [todos, dispatch] = useReducer(todoReducer, initialState);
 
     const handleNewTodo = ( todo ) => {
-        console.log({ todo });
+        const action = {
+            type : '[TODO] add todo',
+            payload : todo
+        }
+
+        dispatch(action)
     }
+        
+    
   return (
     <>
         <h1> Todo App</h1>
